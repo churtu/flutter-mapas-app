@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mapas_app/src/blocs/blocs.dart';
 
 class MapScreen extends StatefulWidget {
@@ -38,9 +39,20 @@ class _MapScreenState extends State<MapScreen> {
               child: Text('Espere...'),
             );
           }
-          return Center(
-            child: Text('${state.lastKnowPosition!.latitude}, ${state.lastKnowPosition!.longitude}'),
+
+          final latlng = LatLng(
+            state.lastKnowPosition!.latitude,
+            state.lastKnowPosition!.longitude
           );
+
+          CameraPosition lugar = CameraPosition(
+              target: latlng,
+              zoom: 14.4746,
+            );
+
+            return GoogleMap(
+              initialCameraPosition: lugar
+            );
         },
       
       ),
