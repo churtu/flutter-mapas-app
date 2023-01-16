@@ -13,7 +13,8 @@ class MapsState extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => GpsBloc()),
-        BlocProvider(create: (_) => LocationBloc())
+        BlocProvider(create: (_) => LocationBloc()),
+        BlocProvider(create: (_) => MapBloc()),
       ], child: const MapasApp());
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 import 'package:mapas_app/src/blocs/blocs.dart';
+import 'package:mapas_app/src/views/views.dart';
+import 'package:mapas_app/src/widgets/widgets.dart';
 
 class MapScreen extends StatefulWidget {
    
@@ -40,21 +42,30 @@ class _MapScreenState extends State<MapScreen> {
             );
           }
 
-          final latlng = LatLng(
-            state.lastKnowPosition!.latitude,
-            state.lastKnowPosition!.longitude
+          final initialLocation = LatLng(
+            locationBloc.state.lastKnowPosition!.latitude,
+            locationBloc.state.lastKnowPosition!.longitude
           );
 
-          CameraPosition lugar = CameraPosition(
-              target: latlng,
-              zoom: 14.4746,
-            );
-
-            return GoogleMap(
-              initialCameraPosition: lugar
-            );
+          return SingleChildScrollView(
+            child: Stack(
+              children: [
+                MapView(
+                  initialLocation: initialLocation
+                )
+                
+              ],
+            ),
+          );
         },
       
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          FabLocation()
+        ]
       ),
     );
   }
