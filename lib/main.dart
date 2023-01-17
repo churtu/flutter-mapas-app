@@ -14,7 +14,9 @@ class MapsState extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => GpsBloc()),
         BlocProvider(create: (_) => LocationBloc()),
-        BlocProvider(create: (_) => MapBloc()),
+        BlocProvider(create: (context) => MapBloc(
+          locationBloc: BlocProvider.of<LocationBloc>(context)
+        )),
       ], child: const MapasApp());
   }
 }
