@@ -240,9 +240,9 @@ class Intersection {
         location: json["location"] == null ? [] : List<double?>.from(json["location"]!.map((x) => x.toDouble())),
         intersectionIn: json["in"],
         duration: json["duration"],
-        turnWeight: json["turn_weight"] == null ? null : json["turn_weight"].toDouble(),
+        turnWeight: json["turn_weight"]?.toDouble(),
         turnDuration: json["turn_duration"],
-        weight: json["weight"] == null ? null : json["weight"].toDouble(),
+        weight: json["weight"]?.toDouble(),
         trafficSignal: json["traffic_signal"],
     );
 
@@ -276,7 +276,7 @@ class MapboxStreetsV8 {
     String toJson() => json.encode(toMap());
 
     factory MapboxStreetsV8.fromMap(Map<String, dynamic> json) => MapboxStreetsV8(
-        mapboxStreetsV8Class: classValues!.map[json["class"]],
+        mapboxStreetsV8Class: classValues.map[json["class"]],
     );
 
     Map<String, dynamic> toMap() => {
@@ -284,11 +284,11 @@ class MapboxStreetsV8 {
     };
 }
 
-enum Class { STREET, PRIMARY }
+enum Class { street, primary }
 
 final classValues = EnumValues({
-    "primary": Class.PRIMARY,
-    "street": Class.STREET
+    "primary": Class.primary,
+    "street": Class.street
 });
 
 class Maneuver {

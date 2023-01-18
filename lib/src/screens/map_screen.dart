@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mapas_app/src/blocs/blocs.dart';
 import 'package:mapas_app/src/views/views.dart';
-import 'package:mapas_app/src/widgets/fab_follow.dart';
-import 'package:mapas_app/src/widgets/fab_toggle_polyline.dart';
 import 'package:mapas_app/src/widgets/widgets.dart';
 
 class MapScreen extends StatefulWidget {

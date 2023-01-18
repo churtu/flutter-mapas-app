@@ -11,7 +11,7 @@ class TrafficInterceptor extends Interceptor{
       'language'    : 'es',
       'overview'    : 'simplified',
       'steps'       : true,
-      'access_token': Environments.mapbox_token
+      'access_token': Environments.mapboxToken
 
     });
     super.onRequest(options, handler);

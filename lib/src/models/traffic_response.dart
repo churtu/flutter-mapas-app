@@ -3,7 +3,6 @@
 //     final trafficResponse = trafficResponseFromMap(jsonString);
 
 import 'package:mapas_app/src/models/models.dart';
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class TrafficResponse {
