@@ -14,7 +14,7 @@ class FabTogglePolyline extends StatelessWidget {
         backgroundColor: Colors.white,
         maxRadius: 25,
         child: IconButton(
-          icon: const Icon(Icons.more_horiz),
+          icon: const Icon(Icons.more_horiz, color: Colors.black),
           onPressed: (){
             mapBloc.add(OnToggleShowRouteEvent());
           },

@@ -9,7 +9,7 @@ class FabLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locationBloc = BlocProvider.of<LocationBloc>(context);
-    // final mapaBloc = BlocProvider.of<MapBloc>(context);
+    final mapaBloc = BlocProvider.of<MapBloc>(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: CircleAvatar(
@@ -27,7 +27,7 @@ class FabLocation extends StatelessWidget {
               return;
             }
 
-            // mapaBloc.moveCamera(userLocation!);
+            mapaBloc.moveCamera(userLocation);
           },
         ),
       ),

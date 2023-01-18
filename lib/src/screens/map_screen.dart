@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mapas_app/src/blocs/blocs.dart';
 import 'package:mapas_app/src/views/views.dart';
 import 'package:mapas_app/src/widgets/fab_follow.dart';
+import 'package:mapas_app/src/widgets/fab_toggle_polyline.dart';
 import 'package:mapas_app/src/widgets/widgets.dart';
 
 class MapScreen extends StatefulWidget {
@@ -55,7 +56,9 @@ class _MapScreenState extends State<MapScreen> {
                     MapView(
                       initialLocation: locationState.lastKnowPosition!,
                       polylines: polylines.values.toSet(),
-                    )
+                    ),
+                    const SearchBar(),
+                    const ManualMarker()
                   ],
                 ),
               );
@@ -68,6 +71,7 @@ class _MapScreenState extends State<MapScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: const [
+          FabTogglePolyline(),
           FabFollow(),
           FabLocation(),
         ]

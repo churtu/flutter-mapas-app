@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mapas_app/src/blocs/blocs.dart';
 import 'package:mapas_app/src/screens/screens.dart';
+import 'package:mapas_app/src/services/services.dart';
 
 void main() => runApp(const MapsState());
 
@@ -17,6 +18,7 @@ class MapsState extends StatelessWidget {
         BlocProvider(create: (context) => MapBloc(
           locationBloc: BlocProvider.of<LocationBloc>(context)
         )),
+        BlocProvider(create: (_) => SearchBloc(trafficService: TrafficService()))
       ], child: const MapasApp());
   }
 }
