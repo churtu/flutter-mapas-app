@@ -11,3 +11,16 @@ class OnActivateManualMarkerEvent extends SearchEvent {}
 
 class OnDesactivateManualMarkerEvent extends SearchEvent {}
 
+class OnNewPlacesFoundEvent extends SearchEvent {
+  final List<Feature>placesResults;
+
+  const OnNewPlacesFoundEvent(this.placesResults);
+}
+
+class OnAddPlaceToHistory extends SearchEvent {
+  final Feature place;
+
+  const OnAddPlaceToHistory(this.place);
+
+}
+

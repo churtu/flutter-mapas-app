@@ -286,7 +286,7 @@ class MapboxStreetsV8 {
 
 enum Class { street, primary }
 
-final classValues = EnumValues({
+final classValues = RouteEnumValues({
     "primary": Class.primary,
     "street": Class.street
 });
@@ -359,11 +359,11 @@ class Waypoint {
     };
 }
 
-class EnumValues<T> {
+class RouteEnumValues<T> {
     Map<String, T> map;
     Map<T, String>? reverseMap;
 
-    EnumValues(this.map);
+    RouteEnumValues(this.map);
 
     Map<T, String>? get reverse {
         reverseMap ??= map.map((k, v) => MapEntry(v, k));
