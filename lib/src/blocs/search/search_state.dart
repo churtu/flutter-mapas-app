@@ -14,10 +14,10 @@ class SearchState extends Equatable {
   SearchState copyWith({
     List<Feature>? history,
     bool? displayManualMarker,
-    List<Feature>? placesResult
+    List<Feature>? placesResults
   }) => SearchState(
     displayManualMarker: displayManualMarker ?? this.displayManualMarker,
-    placesResults: placesResult ?? this.placesResults,
+    placesResults: placesResults ?? this.placesResults,
     history: history ?? this.history
   );
   

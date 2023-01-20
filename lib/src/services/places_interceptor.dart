@@ -7,8 +7,6 @@ class PlacesInterceptor extends Interceptor{
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.queryParameters.addAll({
       'country'     : 'cl',
-      'limit'       : 7,
-      'types'       : 'place,postcode,address',
       'language'    : 'es',
       'access_token': Environments.mapboxToken
     });

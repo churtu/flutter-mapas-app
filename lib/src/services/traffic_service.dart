@@ -29,15 +29,30 @@ class TrafficService {
       if (query.isEmpty) return [];
       final url = '$_basePlacesUrl/$query.json';
       final response = await placesApi.get(url, queryParameters: {
-        'proximity': '${proximity.longitude},${proximity.latitude}'
+        'proximity': '${proximity.longitude},${proximity.latitude}',
+        'limit': 7
       });
 
       final placesResponse = PlacesResponse.fromMap(response.data);
 
       return placesResponse.features;
     } catch (e) {
-      print(e);
       return [];
+    }
+  }
+
+  Future<Feature?> getFeatureByCoors(LatLng coors) async {
+    try {
+      final url = '$_basePlacesUrl/${coors.longitude},${coors.latitude}.json';
+      final response = await placesApi.get(url, queryParameters: {
+        'limit': 1
+      });
+
+      final placesResponse = PlacesResponse.fromMap(response.data);
+
+      return placesResponse.features.first;
+    } catch (e) {
+      return null;
     }
   }
 }

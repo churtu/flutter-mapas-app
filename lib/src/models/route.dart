@@ -239,7 +239,7 @@ class Intersection {
         geometryIndex: json["geometry_index"],
         location: json["location"] == null ? [] : List<double?>.from(json["location"]!.map((x) => x.toDouble())),
         intersectionIn: json["in"],
-        duration: json["duration"],
+        duration: json["duration"]?.toDouble(),
         turnWeight: json["turn_weight"]?.toDouble(),
         turnDuration: json["turn_duration"],
         weight: json["weight"]?.toDouble(),

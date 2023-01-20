@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -25,7 +24,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
 
     on<OnNewPlacesFoundEvent>((event, emit){
-      emit(state.copyWith(placesResult: event.placesResults));
+      emit(state.copyWith(placesResults: event.placesResults));
     });
 
     on<OnAddPlaceToHistory>((event, emit) 
@@ -35,6 +34,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   Future<RouteDestination> getCoorsStartToEnd(LatLng start, LatLng end)async{
+
+    final endPlace = await trafficService.getFeatureByCoors(end);
+
     final trafficResponse = await trafficService.getCoorsStartToEnd(start, end);
     
     final distance = trafficResponse.routes![0]!.distance;
@@ -44,10 +46,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     final points = decodePolyline(geometry, accuracyExponent: 6);
     final latLngList = points.map((coors) => LatLng(coors[0].toDouble(), coors[1].toDouble())).toList();
 
+
     final routeDestination = RouteDestination(
       distance: distance!,
       duration: duration!,
-      points: latLngList
+      points: latLngList,
+      endPlace: endPlace!
     );
 
     return routeDestination;
